@@ -43,9 +43,6 @@ for record in table.find_all('tr'):
 # Convert list to dataframe    
 consumption_dataframe = pd.DataFrame(observations, columns = column_names)
 
-# Current date
-current_date = str(datetime.datetime.now())
-
 # Save dataframe to specified directory
 consumption_dataframe.to_excel("Energy_Consumption" + current_date)
 
@@ -60,4 +57,5 @@ hour = str(now.hour)
 file_name = r'Energy_Consumption_on_" + month +  "/" + day + "/" + year + "_" + hour + ":00.csv'
 
 # Save dataframe to specified directory
+# NOTE: don't run this line yet. I'm working on a solution to this line.
 consumption_dataframe.to_csv(file_name)
