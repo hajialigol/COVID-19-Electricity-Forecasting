@@ -9,7 +9,7 @@ require(dplyr)
   # covid-date [str]: String representing the date to split the cleaned data into.
 # Oupt:
   # df_list [list]: List of cleaned data frames before and after COVID-19.
-Data_Cleaner <- function(data_directory, file_name = "FINAL_PJM_DATA.xlsx",
+data_cleaner <- function(data_directory, file_name = "FINAL_PJM_DATA.xlsx",
                          covid_date = "2020-03-11"){
   
   # Set working directory to data directory
@@ -48,4 +48,5 @@ Data_Cleaner <- function(data_directory, file_name = "FINAL_PJM_DATA.xlsx",
   
   # Return data frames
   return(df_list)
-}
+
+  }
