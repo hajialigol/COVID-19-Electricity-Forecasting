@@ -8,8 +8,7 @@ require(dplyr)
   # file_name [str]: Name of the file.
   # covid-date [str]: String representing the date to split the cleaned data into.
 # Oupt:
-  # pre_covid_df [df]: Cleaned data frame from inputted file before COVID-19.
-  # post_covid_df [df]: Cleaned data frame from given file after COVID-19.
+  # df_list [list]: List of cleaned data frames before and after COVID-19.
 Data_Cleaner <- function(data_directory, file_name = "FINAL_PJM_DATA.xlsx",
                          covid_date = "2020-03-11"){
   
@@ -44,6 +43,9 @@ Data_Cleaner <- function(data_directory, file_name = "FINAL_PJM_DATA.xlsx",
   pre_covid_df <- cleaned_df[covid_date > cleaned_df$Data_Date,]
   post_covid_df <- cleaned_df[covid_date <= cleaned_df$Data_Date,]
   
+  # Create list of data frames with given names
+  df_list <- list("pre-covid" = pre_covid_df, "post-covid" = post_covid_df)
+  
   # Return data frames
-  return(c(pre_covid_df, post_covid_df))
+  return(df_list)
 }
