@@ -10,7 +10,7 @@ require(dplyr)
 # Oupt:
   # df_list [list]: List of cleaned data frames before and after COVID-19.
 data_cleaner <- function(data_directory, file_name = "FINAL_PJM_DATA.xlsx",
-                         covid_date = "2020-03-11"){
+                         covid_date = "2020-03-11", beginning_date = "2019-01-01"){
   
   # Set working directory to data directory
   setwd(data_directory)
@@ -39,12 +39,16 @@ data_cleaner <- function(data_directory, file_name = "FINAL_PJM_DATA.xlsx",
   # Add a year column
   cleaned_df$Year <- format(cleaned_df$Data_Date, "%Y")
   
+  # Separate data based on start date and COVID date
+  pre_covid_df <- cleaned_df %>%
+    filter(Data_Date >= beginning_date, Data_Date < covid_date)
+  
   # Separate data based on COVID cutoff date
-  pre_covid_df <- cleaned_df[covid_date > cleaned_df$Data_Date,]
-  post_covid_df <- cleaned_df[covid_date <= cleaned_df$Data_Date,]
+  covid_df <- cleaned_df %>%
+    filter(Data_Date >= covid_date)
   
   # Create list of data frames with given names
-  df_list <- list("pre-covid" = pre_covid_df, "post-covid" = post_covid_df)
+  df_list <- list("pre-covid" = pre_covid_df, "covid" = covid_df)
   
   # Return data frames
   return(df_list)
