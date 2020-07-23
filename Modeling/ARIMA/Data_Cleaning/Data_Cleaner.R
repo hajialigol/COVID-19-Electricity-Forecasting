@@ -45,5 +45,5 @@ Data_Cleaner <- function(data_directory, file_name = "FINAL_PJM_DATA.xlsx",
   post_covid_df <- cleaned_df[covid_date <= cleaned_df$Data_Date,]
   
   # Return data frames
-  return(pre_covid_df, post_covid_df)
+  return(c(pre_covid_df, post_covid_df))
 }
