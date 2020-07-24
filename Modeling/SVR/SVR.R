@@ -6,8 +6,8 @@ library(e1071)
 library(Metrics)
 
 # Get data cleaning functions
-source("~/GitHub Projects/COVID-19-Electricity-Forecasting/Modeling/ARIMA/Data_Cleaning/Data_Cleaner.R")
-source("~/GitHub Projects/COVID-19-Electricity-Forecasting/Modeling/ARIMA/Data_Cleaning/Training_Testing_Split.R")
+source("~/GitHub Projects/COVID-19-Electricity-Forecasting/Modeling/Data_Cleaning/Data_Cleaner.R")
+source("~/GitHub Projects/COVID-19-Electricity-Forecasting/Modeling/Data_Cleaning/Training_Testing_Split.R")
 
 # Initialize data directory
 data_directory <- ""
