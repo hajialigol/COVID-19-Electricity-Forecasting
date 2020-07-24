@@ -9,7 +9,7 @@ library(MLmetrics)
 source("~/GitHub Projects/COVID-19-Electricity-Forecasting/Modeling/ARIMA/Data_Cleaning/Data_Cleaner.R")
 source("~/GitHub Projects/COVID-19-Electricity-Forecasting/Modeling/ARIMA/Data_Cleaning/Training_Testing_Split.R")
 
-# Directory data exists
+# Initialize data directory
 data_directory <- ""
 
 # Get cleaned data
@@ -31,9 +31,6 @@ pre_covid_ts_train <- ts(pre_covid_train$Real_Time_Hourly_Price, frequency = 365
 pre_covid_ts_test <- ts(pre_covid_test$Real_Time_Hourly_Price, frequency = 365*24, start = c(2019, 1))
 covid_ts_train <- ts(covid_train$Real_Time_Hourly_Price, frequency = 365*24, start = c(2020, 3))
 covid_ts_test <- ts(covid_test$Real_Time_Hourly_Price, frequency = 365*24, start = c(2020, 3))
-
-# Plot hourly price
-plot(pre_covid_ts)
 
 # Create arima model
 pre_covid_arima <- auto.arima(pre_covid_ts_train)
@@ -68,28 +65,22 @@ plot(covid_forecast, ylab = "Hourly Energy Price", xlab = 'Years',
 # Model Summaries ---------------------------------------------------------
 
 # Pre-COVID model on pre-COVID training data 
-summary(pre_covid_arima)
 accuracy(pre_covid_arima)
 
 # Pre-COVID model on pre-COVID testing data
 pre_covid_test_model <- Arima(pre_covid_ts_test, model = pre_covid_arima)
-summary(pre_covid_test_model)
 accuracy(pre_covid_test_model)
 
 # Pre-COVID model on COVID training data
-summary(pc_model_covid)
 accuracy(pc_model_covid)
 
 # Pre-COVID model on COVID testing data
 pc_test_model <- Arima(covid_ts_test, model = pc_model_covid)
-summary(pc_test_model)
 accuracy(pc_test_model)
 
 # COVID model on COVID training data
-summary(covid_model)
 accuracy(covid_model)
 
 # COVID model on COVID testing data
 covid_test_model <- Arima(covid_ts_test, model = covid_model)
-summary(covid_test_model)
 accuracy(covid_test_model)
