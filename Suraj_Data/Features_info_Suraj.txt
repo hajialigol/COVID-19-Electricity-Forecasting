@@ -1,0 +1,5 @@
+Details about 'FINAL_PJM_DATA_Suraj.xlsx'
+1)I have just used the data from month 'Jan Feb Mar as (Winter Months) and May, June, Jul and Aug (as Summer Months)'. For Winter the months are denoted as '0' and for summer as '1'
+2) Rest I removed Fridays as the patters can vary. Weekdays (Mon-Thur) are denoted as '1' and Weekends (Sat and Sunday) as '0'
+3) The variables I am using to build the models are ''['Demand (MW) (Adjusted)','Real-Time Hourly Price(kWh)','W1Wnd0','W0S1']''
+4) Drop Na values before building the model
