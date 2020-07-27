@@ -1,0 +1,2 @@
+Formula used for modeling is 
+formula = Real_Time_Hourly_Price ~ (Hour_Number + Demand_Forecast + Demand_Adjusted + Net_Generation_Adjusted) 
